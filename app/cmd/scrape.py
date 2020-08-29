@@ -16,7 +16,7 @@ def scrape():
     """
     Scrape twitter media
     """
-    twitter_profile = click.prompt("What is your simpee's twitter profile?",
+    twitter_profile = click.prompt("What twitter username?",
                                    type=str, default="@C_JessiJKT48")
     url = "https://twitter.com/{}".format(twitter_profile)
     media_counts = click.prompt(
