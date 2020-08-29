@@ -19,8 +19,7 @@ class Scraper():
         self.media_counts = media_counts
         self.downloaded_media_path = config.downloaded_media_path
 
-        # NOTE: Make this max_scroll_time configurable.
-        self.max_scroll_times = 5
+        self.max_scroll_times = config.max_page_scroll_times
 
         self.web_driver = webdriver.Chrome(
             config.chrome_driver_path, keep_alive=True)
