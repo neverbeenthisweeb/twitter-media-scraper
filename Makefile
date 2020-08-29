@@ -3,5 +3,5 @@
 include .env
 export
 
-scrape:
+run-scraper:
 	@python main.py scraper scrape
