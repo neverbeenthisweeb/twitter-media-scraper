@@ -7,7 +7,11 @@ how to install:
 1) clone repo
 2) copy `.env.example` and suit it to your own `cp .env.example .env` (later, edit this `.env` to match your config)
 2) download python dependencies `pip install -r requirements.txt`
-3) run scraper `make run scraper scrape`
+3) run scraper `make run-scraper`
+
+demo:
+
+![demo](https://user-images.githubusercontent.com/42462215/91636616-35c84780-ea2c-11ea-942c-ff42285da94e.png)
 
 notes:
 * make sure you have the correct chrome driver version (see here for [download](https://sites.google.com/a/chromium.org/chromedriver/downloads))
