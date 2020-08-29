@@ -48,6 +48,8 @@ class Scraper():
 
     # TODO: Implement threading.
     def download_all_media(self, media_urls: list):
+        print("About to download {} media".format(
+            len(media_urls)))
         for url in media_urls:
             id = self.generate_media_id()
             self.download_media(id, url)
@@ -80,11 +82,10 @@ class Scraper():
               + "}")
 
         cur_scroll_times = 0
+        media_src_urls = set([])
 
         while True:
             is_finished = False
-
-            media_src_urls = []
 
             # scroll page to get more media
             self.scroll_page()
@@ -104,8 +105,8 @@ class Scraper():
             for raw_image in raw_images:
                 src_url = raw_image["src"]
 
-                if self.is_media_url(raw_image["src"]):
-                    media_src_urls.append(src_url)
+                if self.is_media_url(src_url):
+                    media_src_urls.add(src_url)
 
                 if len(media_src_urls) >= self.media_counts:
                     print("Desired number of media ({}) are found".format(
@@ -113,7 +114,10 @@ class Scraper():
                     is_finished = True
                     break
 
-            if cur_scroll_times == self.max_scroll_times:
+            print("Received {} media images".format(
+                len(media_src_urls)))
+
+            if (cur_scroll_times == self.max_scroll_times) and not is_finished:
                 print("Maximum page scrolling ({}) is reached".format(
                     self.max_scroll_times))
                 is_finished = True
